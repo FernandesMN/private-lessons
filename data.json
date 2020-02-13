@@ -9,6 +9,26 @@
       "acting": "Backend, Frontend",
       "type_of_class": "D",
       "created_at": 1581328638822
+    },
+    {
+      "id": 2,
+      "name": "Diego Fernandes",
+      "birth": 792720000000,
+      "avatar_url": "https://rocketseat.com.br/",
+      "schooling": "esc",
+      "acting": "Full stack",
+      "type_of_class": "D",
+      "created_at": 1581597711101
+    },
+    {
+      "id": 3,
+      "name": "Matheus Fernandes",
+      "birth": 956188800000,
+      "avatar_url": "https://rocketseat.com.br/",
+      "schooling": "emc",
+      "acting": "Backend",
+      "type_of_class": "P",
+      "created_at": 1581598154569
     }
   ]
 }

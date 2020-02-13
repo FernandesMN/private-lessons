@@ -1,0 +1,54 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+    <title>Private Lessons - Teacher</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <section 
+            class="avatar"
+            style="background: url(https://source.unsplash.com/collection/8360382/500x500) no-repeat center center / cover">
+        </section>
+
+        <section class="details">
+            <h3>Detalhes</h3>
+            
+            <div class="item">
+                <div>Nome completo</div>
+                <div>{{teacher.name}}</div>
+            </div>
+
+            <div class="item">
+                <div>Idade</div>
+                <div>{{teacher.age}}</div>
+            </div>
+
+            <div class="item">
+                <div>Graude esolaridade</div>
+                <div>{{teacher.schooling}}</div>
+            </div>
+
+            <div class="item">
+                <div>Tipo de aula</div>
+                <div>{{ "Presencial" if teacher.type_of_class == 'P' else "A distância" }}</div>
+            </div>
+
+            <div class="item">
+                <div>Acompanhamento</div>
+                
+                <div>
+                    {% for acting in teacher.acting %}
+                        <span>{{acting}}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Desde</div>
+                <div>{{teacher.created_at}}</div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
