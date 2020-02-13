@@ -1,13 +1,13 @@
 {
   "teachers": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Mayk Brito",
-      "birth": 633830400000,
-      "avatar_url": "https://rocketseat.com.br/",
-      "schooling": "esc",
+      "birth": 696902400000,
+      "avatar_url": "",
+      "schooling": "emc",
       "acting": "Backend, Frontend",
-      "type_of_class": "D",
+      "type_of_class": "R",
       "created_at": 1581328638822
     },
     {
@@ -17,7 +17,7 @@
       "avatar_url": "https://rocketseat.com.br/",
       "schooling": "esc",
       "acting": "Full stack",
-      "type_of_class": "D",
+      "type_of_class": "R",
       "created_at": 1581597711101
     },
     {

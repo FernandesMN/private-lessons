@@ -10,7 +10,12 @@
         <div>Full name</div>
         
         <div>
-            <input type="text" name="name" placeholder="Digite o nome do professor">
+            <input
+                type="text"
+                name="name" 
+                placeholder="Digite o nome do professor"
+                value="{{teacher.name}}"
+            >
         </div>
     </div>
 
@@ -18,7 +23,11 @@
         <div>Date of birth</div>
         
         <div>
-            <input type="date" name="birth">
+            <input 
+                type="date" 
+                name="birth"
+                value="{{teacher.birth}}"
+            >
         </div>
     </div>
 
@@ -37,15 +46,39 @@
     <div class="item">
         <div>Type of class</div>
         <div>
-            <span><input type="radio" name="type_of_class" value="P" checked>Presential</span>
-            <span><input type="radio" name="type_of_class" value="D">Remotely</span>
+            <span>
+                <input 
+                    type="radio" 
+                    name="type_of_class" 
+                    value="P"
+                    {% if teacher.type_of_class == 'P' %}
+                        checked
+                    {% endif %}
+                >Presential
+            </span>
+
+            <span>
+                <input 
+                    type="radio" 
+                    name="type_of_class" 
+                    value="R"
+                    {% if teacher.type_of_class == 'R' %}
+                        checked
+                    {% endif %}
+                >Remotely
+            </span>
         </div>
     </div>
 
     <div class="item">
         <div>Occupation area</div>
         <div>
-            <input type="text" name="acting" placeholder="Digite as áreas separadas por vírgula">
+            <input 
+                type="text" 
+                name="acting" 
+                placeholder="Digite as áreas separadas por vírgula"
+                value="{{teacher.acting}}"
+            >
         </div>
     </div>
 

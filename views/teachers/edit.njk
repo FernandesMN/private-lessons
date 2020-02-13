@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <form class="card" method="POST" action="/teachers">
+    <form class="card" method="POST" action="/teachers?_method=PUT">
         <section 
             class="avatar"
             style="background: url(https://source.unsplash.com/collection/8360382/500x500) no-repeat center center / cover">
@@ -15,6 +15,8 @@
             <h3>Edit teacher</h3>
             
             {% include 'teachers/fields.njk' %}
+
+            <input type="hidden" name="id" value="{{teacher.id}}">
         </section>
     </form>
 {% endblock %}
