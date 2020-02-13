@@ -19,6 +19,8 @@ routes.get("/teachers/:id", teachers.show);
 
 routes.post("/teachers", teachers.post);
 
+routes.put("/teachers", teachers.put);
+
 routes.get("/students", function(req,res) {
     return res.render("students/index");
 });
