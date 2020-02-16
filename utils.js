@@ -18,11 +18,11 @@ module.exports = {
 
         switch(graduation) {
             case "emc":
-                return "Ensino médio completo";
+                return "Complete high school";
             case "esc":
-                return "Ensino superior completo";
+                return "Complete higher education";
             default:
-                return "Mestrado e/ou Doutorado";
+                return "Masters and/or Doctorate";
         }
     },
 

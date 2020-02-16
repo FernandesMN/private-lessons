@@ -89,6 +89,7 @@ header {
 /*details*/
 .details {
     padding: 32px;
+    position: relative;
 }
 
 .details .item {
@@ -155,10 +156,11 @@ input::placeholder {
 
 a.button,
 button[type="submit"] {
-    width: 100%;
+    width: 90%;
     font-size: 16px;
     padding: 8px 16px;
     margin-top: 32px;
+    margin-left: 5%;
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
@@ -170,4 +172,14 @@ a.button {
     text-align: center;
     text-decoration: none;
     box-sizing: border-box;
+}
+
+button[type="submit"].button-delete {
+    background-color: rgba(226, 14, 14, 0.74);
+    text-align: center;
+}
+
+.redirect {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }

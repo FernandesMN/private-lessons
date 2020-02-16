@@ -19,16 +19,6 @@
       "acting": "Full stack",
       "type_of_class": "R",
       "created_at": 1581597711101
-    },
-    {
-      "id": 3,
-      "name": "Matheus Fernandes",
-      "birth": 956188800000,
-      "avatar_url": "https://rocketseat.com.br/",
-      "schooling": "emc",
-      "acting": "Backend",
-      "type_of_class": "P",
-      "created_at": 1581598154569
     }
   ]
 }
