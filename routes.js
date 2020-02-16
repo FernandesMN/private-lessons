@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 
+//importando métodos para as rotas
 const teachers = require('./teachers');
 
 routes.get("/", function(req,res) {
