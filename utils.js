@@ -36,18 +36,13 @@ module.exports = {
         const month = `0${date.getUTCMonth() + 1}`.slice(-2);
         const day = `0${date.getUTCDate()}`.slice(-2);
     
-        return `${year}-${month}-${day}`;
-    },
-
-    //método também para calcular data mas retornar em outro formato
-    dateDesde: function date(timestamp) {
-        const date = new Date(timestamp);
-
-        const year = date.getUTCFullYear();
-        const month = `0${date.getUTCMonth() + 1}`.slice(-2);
-        const day = `0${date.getUTCDate()}`.slice(-2);
-    
-        return `${day}/${month}/${year}`;
+        return {
+            day,
+            month,
+            year,
+            iso: `${year}-${month}-${day}`,
+            since: `${day}/${month}/${year}`
+        };
     },
 
     //esse método verifica se o dado recebido é um vetor ou não

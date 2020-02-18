@@ -3,7 +3,7 @@ const fs = require('fs');
 //importando os dados
 const data = require('./data.json');
 //importando os métodos
-const { age, graduation, dateDesde, date, cutOrNot } = require('./utils');
+const { age, graduation, date, cutOrNot } = require('./utils');
 
 //index
 exports.index = function(req,res) {
@@ -71,7 +71,7 @@ exports.show = function(req,res) {
         age: age(foundTeacher.birth),
         schooling: graduation(foundTeacher.schooling),
         acting: cutOrNot(foundTeacher),
-        created_at: dateDesde(foundTeacher.created_at)
+        created_at: date(foundTeacher.created_at).since
     }
 
     //renderizano página com os dados
