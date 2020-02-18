@@ -5,49 +5,30 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card">
-        <section 
-            class="avatar"
-            style="background: url(https://source.unsplash.com/collection/8360382/500x500) no-repeat center center / cover">
-        </section>
-
-        <section class="details">
-            <h3>Details</h3>
-            
-            <div class="item">
-                <div>Full name</div>
-                <div>Matheus Fernandes do Nascimento</div>
-            </div>
-
-            <div class="item">
-                <div>Age</div>
-                <div>19</div>
-            </div>
-
-            <div class="item">
-                <div>Education level</div>
-                <div>Ensino superior</div>
-            </div>
-
-            <div class="item">
-                <div>Type of class</div>
-                <div>Presencial</div>
-            </div>
-
-            <div class="item">
-                <div>Side dish</div>
-                
-                <div>
-                    <span>Programação III</span>
-                    <span>Lógica de programação</span>
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Since</div>
-                <div>02/02/2025</div>
-            </div>
-        </section>
+    <div class="card table-teachers">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Side dish</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% for teacher in teachers %}
+                    <tr>
+                        <td><span style="background-image: url({{teacher.avatar_url}})"></span>{{teacher.name}}</td>
+                        <td>
+                            {% for acting in teacher.acting %}
+                                <span>{{acting}}</span>
+                            {% endfor %}
+                        </td>
+                        <td><a href="/teachers/{{teacher.id}}">show</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
 

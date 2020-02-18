@@ -48,5 +48,32 @@ module.exports = {
         const day = `0${date.getUTCDate()}`.slice(-2);
     
         return `${day}/${month}/${year}`;
+    },
+
+    //esse método verifica se o dado recebido é um vetor ou não
+    //se for ele aplica uma resolução se não for a resolão será outra
+    //de qualquer forma, o método retorna o acting como um array e/ou garante que ele é um
+    cutOrNot: function cutOrNot(teach) {
+        let teachers = teach;
+
+        if (teachers instanceof Array) {
+            for (i = 0; i < teachers.length; i++){
+                if (typeof(teachers[i].acting) === 'object') {
+                    break;
+                }
+        
+                teachers[i].acting = teachers[i].acting.split(",");
+            }
+        }
+        else{
+            if (typeof(teachers.acting) === 'object') {
+                return teachers
+            }
+            else {
+                teachers.acting.split(",");
+            }
+        }
+
+        return teachers;
     }
 };

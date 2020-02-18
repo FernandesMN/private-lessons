@@ -183,3 +183,77 @@ button[type="submit"].button-delete {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+/*=== TABLE ===*/
+.table-teachers {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.table-teachers table {
+    border-spacing: 0;
+}
+
+.table-teachers thead tr th {
+    text-align: center;
+}
+
+.table-teachers tbody tr td {
+    text-align: center;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+    color: #777;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+}
+
+tbody tr td:first-child span {
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 1px solid white;
+}
+
+tbody tr td:last-child a {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    color: white;
+    padding: 8px 16px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.table-teachers thead tr th:last-child, td:last-child {
+    text-align: center;
+}
+
+.table-teachers tbody tr td:nth-child(2) span {
+    background-color: #ffff66;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #777;
+}

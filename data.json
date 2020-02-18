@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Mayk Brito",
       "birth": 696902400000,
-      "avatar_url": "",
+      "avatar_url": "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
       "schooling": "emc",
       "acting": "Backend, Frontend",
       "type_of_class": "R",
@@ -14,9 +14,11 @@
       "id": 2,
       "name": "Diego Fernandes",
       "birth": 792720000000,
-      "avatar_url": "https://rocketseat.com.br/",
+      "avatar_url": "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
       "schooling": "esc",
-      "acting": "Full stack",
+      "acting": [
+        "Full stack"
+      ],
       "type_of_class": "R",
       "created_at": 1581597711101
     }

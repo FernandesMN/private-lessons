@@ -3,7 +3,15 @@ const fs = require('fs');
 //importando os dados
 const data = require('./data.json');
 //importando os métodos
-const { age, graduation, dateDesde, date } = require('./utils');
+const { age, graduation, dateDesde, date, cutOrNot } = require('./utils');
+
+//index
+exports.index = function(req,res) {
+    //para separar os acompanhamentos e transformar em vetores
+    const teachers = cutOrNot(data.teachers);
+
+    return res.render("teachers/index", {teachers});
+};
 
 //post
 exports.post = function(req,res) {
@@ -62,7 +70,7 @@ exports.show = function(req,res) {
         ...foundTeacher,
         age: age(foundTeacher.birth),
         schooling: graduation(foundTeacher.schooling),
-        acting: foundTeacher.acting.split(","),
+        acting: cutOrNot(foundTeacher),
         created_at: dateDesde(foundTeacher.created_at)
     }
 
