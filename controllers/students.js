@@ -1,16 +1,21 @@
 //para escrever dados em arquivos
 const fs = require('fs');
 //importando os dados
-const data = require('./data.json');
+const data = require('../data.json');
 //importando os métodos
-const { age, graduation, date, cutOrNot } = require('./utils');
+const { age, graduation, date, cutOrNot } = require('../utils');
 
 //index
 exports.index = function(req,res) {
     //para separar os acompanhamentos e transformar em vetores
-    const teachers = cutOrNot(data.teachers);
+    const students = cutOrNot(data.students);
 
-    return res.render("teachers/index", {teachers});
+    return res.render("students/index", {students});
+};
+
+//create
+exports.create = function(req,res) {
+    return res.render("students/create");
 };
 
 //post
@@ -31,10 +36,10 @@ exports.post = function(req,res) {
     //fazendo ajustes
     birth = Date.parse(birth)
     const created_at = Date.now();
-    const id = Number(data.teachers.length + 1);
+    const id = Number(data.students.length + 1);
 
     //preenchendo os dados
-    data.teachers.push({
+    data.students.push({
         id,
         name,
         birth,
@@ -49,7 +54,7 @@ exports.post = function(req,res) {
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
         if(err) return res.send("Write files error.");
 
-        return res.redirect("/teachers");
+        return res.redirect("/students");
     });
 };
 
@@ -58,42 +63,42 @@ exports.show = function(req,res) {
     const { id } = req.params;
 
     //procurando professor a parti do id
-    const foundTeacher = data.teachers.find(function(teacher) {
-        return id == teacher.id;
+    const foundStudent = data.students.find(function(student) {
+        return id == student.id;
     });
 
     //garantindo que ele foi encontrado
-    if (!foundTeacher) return res.send("Teacher not found!");
+    if (!foundStudent) return res.send("student not found!");
 
     //Preste atenção no preenchimento, ótimo conceito além de estar ajustando cada dado
-    const teacher = {
-        ...foundTeacher,
-        age: age(foundTeacher.birth),
-        schooling: graduation(foundTeacher.schooling),
-        acting: cutOrNot(foundTeacher),
-        created_at: date(foundTeacher.created_at).since
+    const student = {
+        ...foundStudent,
+        age: age(foundStudent.birth),
+        schooling: graduation(foundStudent.schooling),
+        acting: cutOrNot(foundStudent),
+        created_at: date(foundStudent.created_at).since
     }
 
     //renderizano página com os dados
-    return res.render("teachers/show", {teacher})
+    return res.render("students/show", {student})
 };
 
 //edit
 exports.edit = function(req, res) {
     const { id } = req.params;
 
-    const foundTeacher = data.teachers.find(function(teacher) {
-        return id == teacher.id;
+    const foundStudent = data.students.find(function(student) {
+        return id == student.id;
     });
 
-    if (!foundTeacher) return res.send("Teacher not found!");
+    if (!foundStudent) return res.send("student not found!");
 
-    const teacher = {
-        ...foundTeacher,
-        birth: date(foundTeacher.birth)
+    const student = {
+        ...foundStudent,
+        birth: date(foundStudent.birth)
     }
 
-    return res.render("teachers/edit", {teacher});
+    return res.render("students/edit", {student});
 };
 
 //put
@@ -101,28 +106,28 @@ exports.update = function(req, res) {
     const { id } = req.body;
     let index = 0;
 
-    const foundTeacher = data.teachers.find(function(teacher, foundIndex) {
-        if (id == teacher.id){
+    const foundStudent = data.students.find(function(student, foundIndex) {
+        if (id == student.id){
             index = foundIndex;
             return true;
         }
     });
 
-    if (!foundTeacher) return res.send("Teacher not found!");
+    if (!foundStudent) return res.send("student not found!");
 
     //perceba a sacada, ao espalhar os dados eles automáticamente se atualizam
-    const teacher = {
-        ...foundTeacher,
+    const student = {
+        ...foundStudent,
         ...req.body,
         birth: Date.parse(req.body.birth)
     }
 
-    data.teachers[index] = teacher;
+    data.students[index] = student;
 
     fs.writeFile("data.json", JSON.stringify(data,null,2), function(err) {
         if (err) return res.send("write file error!");
 
-        return res.redirect(`/teachers/${id}`);
+        return res.redirect(`/students/${id}`);
     });
 };
 
@@ -131,15 +136,15 @@ exports.delete = function(req, res) {
     const { id } = req.body;
 
     //vai colocar todos que tem id diferente do id recebido
-    const filteredTeachers = data.teachers.filter(function(teacher) {
-        return teacher.id != id;
+    const filteredStudents = data.students.filter(function(student) {
+        return student.id != id;
     });
 
-    data.teachers = filteredTeachers;
+    data.students = filteredStudents;
 
     fs.writeFile("data.json", JSON.stringify(data,null,2), function(err) {
         if (err) return res.send("write file error!");
     
-        return res.redirect("/teachers");
+        return res.redirect("/students");
     });
 }
