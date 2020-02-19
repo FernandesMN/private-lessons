@@ -1,28 +1,28 @@
 {
-  "students": [],
-  
+  "students": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1514369118554-e20d93546b30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+      "name": "Eugenia Roberta",
+      "birth": 946684800000,
+      "email": "sarddsaasinha@gmail.com",
+      "school_year": "3º high school year",
+      "workload": "13"
+    }
+  ],
   "teachers": [
     {
-      "id": "1",
-      "name": "Mayk Brito",
-      "birth": 696902400000,
-      "avatar_url": "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-      "schooling": "emc",
-      "acting": "Backend, Frontend",
-      "type_of_class": "R",
-      "created_at": 1581328638822
-    },
-    {
-      "id": 2,
-      "name": "Diego Fernandes",
-      "birth": 792720000000,
-      "avatar_url": "https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-      "schooling": "esc",
+      "id": 1,
+      "name": "Joe Goldberg",
+      "birth": 636249600000,
+      "avatar_url": "https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "schooling": "md",
       "acting": [
-        "Full stack"
+        "Física",
+        " Matemática"
       ],
-      "type_of_class": "R",
-      "created_at": 1581597711101
+      "type_of_class": "P",
+      "created_at": 1582119812038
     }
   ]
 }

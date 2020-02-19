@@ -3,19 +3,16 @@ const fs = require('fs');
 //importando os dados
 const data = require('../data.json');
 //importando os métodos
-const { age, graduation, date, cutOrNot } = require('../utils');
+const { age, graduation, date } = require('../utils');
 
 //index
 exports.index = function(req,res) {
-    //para separar os acompanhamentos e transformar em vetores
-    const teachers = cutOrNot(data.teachers);
-
-    return res.render("teachers/index", {teachers});
+    return res.render("teachers/index", {teachers: data.teachers});
 };
 
 //create
 exports.create = function(req,res) {
-    return res.render("students/create");
+    return res.render("teachers/create");
 };
 
 //post
@@ -34,7 +31,8 @@ exports.post = function(req,res) {
     let { avatar_url, name, birth, schooling, type_of_class, acting } = req.body;
 
     //fazendo ajustes
-    birth = Date.parse(birth)
+    birth = Date.parse(birth);
+    acting = acting.split(",");
     const created_at = Date.now();
     const id = Number(data.teachers.length + 1);
 
@@ -75,7 +73,6 @@ exports.show = function(req,res) {
         ...foundTeacher,
         age: age(foundTeacher.birth),
         schooling: graduation(foundTeacher.schooling),
-        acting: cutOrNot(foundTeacher),
         created_at: date(foundTeacher.created_at).since
     }
 

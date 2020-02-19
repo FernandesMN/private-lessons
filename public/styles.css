@@ -136,7 +136,7 @@ header {
 }
 
 /*=== FORM ===*/
-input {
+input, select {
     width: 100%;
     outline: none;
     color: #555;
@@ -185,21 +185,21 @@ button[type="submit"].button-delete {
 }
 
 /*=== TABLE ===*/
-.table-teachers {
+.table-container {
     display: block;
     padding: 40px;
     box-sizing: border-box;
 }
 
-.table-teachers table {
+.table-container table {
     border-spacing: 0;
 }
 
-.table-teachers thead tr th {
+.table-container thead tr th {
     text-align: center;
 }
 
-.table-teachers tbody tr td {
+.table-container tbody tr td {
     text-align: center;
 }
 
@@ -220,7 +220,7 @@ tbody tr:last-child td {
 
 tbody tr td:first-child {
     display: grid;
-    grid-template-columns: 20px 1fr;
+    grid-template-columns: 64px 1fr;
     align-items: center;
 }
 
@@ -234,6 +234,7 @@ tbody tr td:first-child span {
     border: 1px solid white;
 }
 
+.table-container > a,
 tbody tr td:last-child a {
     text-decoration: none;
     background-color: var(--primary-color);
@@ -244,11 +245,11 @@ tbody tr td:last-child a {
     text-transform: uppercase;
 }
 
-.table-teachers thead tr th:last-child, td:last-child {
+.table-container thead tr th:last-child, td:last-child {
     text-align: center;
 }
 
-.table-teachers tbody tr td:nth-child(2) span {
+.table-container tbody tr td:nth-child(2) span {
     background-color: #ffff66;
     padding: 8px 16px;
     border-radius: 16px;
@@ -256,4 +257,10 @@ tbody tr td:last-child a {
     font-weight: bold;
     text-transform: uppercase;
     color: #777;
+}
+
+.table-container > a {
+    display: inline-block;
+    margin-bottom: 16px;
+    margin-left: 8px;
 }

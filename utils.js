@@ -41,34 +41,29 @@ module.exports = {
             month,
             year,
             iso: `${year}-${month}-${day}`,
-            since: `${day}/${month}/${year}`
+            since: `${day}/${month}/${year}`,
+            birthDay: `${day}/${month}`
         };
     },
 
-    //esse método verifica se o dado recebido é um vetor ou não
-    //se for ele aplica uma resolução se não for a resolão será outra
-    //de qualquer forma, o método retorna o acting como um array e/ou garante que ele é um
-    cutOrNot: function cutOrNot(teach) {
-        let teachers = teach;
-
-        if (teachers instanceof Array) {
-            for (i = 0; i < teachers.length; i++){
-                if (typeof(teachers[i].acting) === 'object') {
-                    break;
-                }
-        
-                teachers[i].acting = teachers[i].acting.split(",");
-            }
+    grade: function grade(year) {
+        switch(year) {
+            case "5ef":
+                return "5º year of elementary school"
+            case "6ef":
+                return "6º year of elementary school"
+            case "7ef":
+                return "7º year of elementary school"
+            case "8ef":
+                return "8º year of elementary school"
+            case "9ef":
+                return "9º year of elementary school"
+            case "1em":
+                return "1º high school year"
+            case "2em":
+                return "2º high school year"
+            default:
+                return "3º high school year"  
         }
-        else{
-            if (typeof(teachers.acting) === 'object') {
-                return teachers
-            }
-            else {
-                teachers.acting.split(",");
-            }
-        }
-
-        return teachers;
     }
 };

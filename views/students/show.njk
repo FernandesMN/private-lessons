@@ -20,42 +20,35 @@
             </div>
 
             <div class="item">
-                <div>Age</div>
-                <div>{{student.age}}</div>
+                <div>Birthday</div>
+                <div>{{student.birth}}</div>
             </div>
 
             <div class="item">
-                <div>Education level</div>
-                <div>{{student.schooling}}</div>
+                <div>Email</div>
+                <div>{{student.email}}</div>
             </div>
 
             <div class="item">
-                <div>Type of class</div>
-                <div>{{ "Presencial" if student.type_of_class == 'P' else "A distância" }}</div>
+                <div>School year</div>
+                <div>{{student.school_year}}</div>
             </div>
 
             <div class="item">
-                <div>Side dish</div>
+                <div>Weekly workload</div>
                 
-                <div>
-                    {% for acting in student.acting %}
-                        <span>{{acting}}</span>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Since</div>
-                <div>{{student.created_at}}</div>
+                <div>{{student.workload}} hr</div>
             </div>
 
             <div class="redirect">
                 <a href="/students/{{student.id}}/edit" class="button">Edit</a>
-                <form method="POST" action="/students?_method=DELETE" class="form-delete">
+                <form method="POST" action="/students?_method=DELETE" id="form-delete">
                     <input type="hidden" value="{{student.id}}" name="id">
                     <button type="submit" class="button-delete">Delete</button>
                 </form>
             </div>
+
+            {% include 'confirm.njk' %}
         </section>
     </div>
 {% endblock %}

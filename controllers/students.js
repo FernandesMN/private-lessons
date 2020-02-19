@@ -3,12 +3,15 @@ const fs = require('fs');
 //importando os dados
 const data = require('../data.json');
 //importando os métodos
-const { age, graduation, date, cutOrNot } = require('../utils');
+const { date, grade } = require('../utils');
 
 //index
 exports.index = function(req,res) {
-    //para separar os acompanhamentos e transformar em vetores
-    const students = cutOrNot(data.students);
+    const students = data.students
+
+    for (i = 0; i < students.length; i++) {
+        students[i].school_year = grade(students[i].school_year);
+    };
 
     return res.render("students/index", {students});
 };
@@ -30,24 +33,20 @@ exports.post = function(req,res) {
         };
     };
 
-    //desestruturando para pegar somente o que interessa
-    let { avatar_url, name, birth, schooling, type_of_class, acting } = req.body;
-
     //fazendo ajustes
-    birth = Date.parse(birth)
-    const created_at = Date.now();
-    const id = Number(data.students.length + 1);
+    birth = Date.parse(req.body.birth)
+    let id = 1;
+    const lastStudent = data.students[data.students.length - 1];
 
+    if (lastStudent) {
+        id = lastStudent.id + 1;
+    };
+    
     //preenchendo os dados
     data.students.push({
         id,
-        name,
+        ...req.body,
         birth,
-        avatar_url,
-        schooling,
-        acting,
-        type_of_class,
-        created_at
     });
 
     //escrevendo os dados no arquivo
@@ -73,10 +72,8 @@ exports.show = function(req,res) {
     //Preste atenção no preenchimento, ótimo conceito além de estar ajustando cada dado
     const student = {
         ...foundStudent,
-        age: age(foundStudent.birth),
-        schooling: graduation(foundStudent.schooling),
-        acting: cutOrNot(foundStudent),
-        created_at: date(foundStudent.created_at).since
+        birth: date(foundStudent.birth).birthDay,
+        school_year: grade(foundStudent.school_year)
     }
 
     //renderizano página com os dados
@@ -95,7 +92,7 @@ exports.edit = function(req, res) {
 
     const student = {
         ...foundStudent,
-        birth: date(foundStudent.birth)
+        birth: date(foundStudent.birth).iso
     }
 
     return res.render("students/edit", {student});

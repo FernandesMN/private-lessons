@@ -51,11 +51,13 @@
 
             <div class="redirect">
                 <a href="/teachers/{{teacher.id}}/edit" class="button">Edit</a>
-                <form method="POST" action="/teachers?_method=DELETE" class="form-delete">
+                <form method="POST" action="/teachers?_method=DELETE" id="form-delete">
                     <input type="hidden" value="{{teacher.id}}" name="id">
                     <button type="submit" class="button-delete">Delete</button>
                 </form>
             </div>
+
+            {% include 'confirm.njk' %}
         </section>
     </div>
 {% endblock %}
