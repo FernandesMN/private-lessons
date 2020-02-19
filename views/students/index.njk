@@ -1,11 +1,11 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Private Lessons - Teachers</title>
+    <title>Private Lessons - Students</title>
 {% endblock %}
 
 {% block content %}
-    <div class="card table-teachers">
+    <div class="card table-students">
         <table width="100%">
             <thead>
                 <tr>
@@ -16,15 +16,15 @@
             </thead>
         
             <tbody>
-                {% for teacher in teachers %}
+                {% for student in students %}
                     <tr>
-                        <td><span style="background-image: url({{teacher.avatar_url}})"></span>{{teacher.name}}</td>
+                        <td><span style="background-image: url({{student.avatar_url}})"></span>{{student.name}}</td>
                         <td>
-                            {% for acting in teacher.acting %}
+                            {% for acting in student.acting %}
                                 <span>{{acting}}</span>
                             {% endfor %}
                         </td>
-                        <td><a href="/teachers/{{teacher.id}}">show</a></td>
+                        <td><a href="/students/{{student.id}}">show</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

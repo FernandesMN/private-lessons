@@ -1,85 +1,85 @@
-    <div class="item">
-        <div>Avatar URL</div>
-        
-        <div>
-            <input type="url" name="avatar_url" placeholder="https://">
-        </div>
+<div class="item">
+    <div>Avatar URL</div>
+    
+    <div>
+        <input type="url" name="avatar_url" placeholder="https://">
     </div>
+</div>
 
-    <div class="item">
-        <div>Full name</div>
-        
-        <div>
-            <input
-                type="text"
-                name="name" 
-                placeholder="Digite o nome do professor"
-                value="{{teacher.name}}"
-            >
-        </div>
+<div class="item">
+    <div>Full name</div>
+    
+    <div>
+        <input
+            type="text"
+            name="name" 
+            placeholder="Enter the name of the teacher"
+            value="{{teacher.name}}"
+        >
     </div>
+</div>
 
-    <div class="item">
-        <div>Date of birth</div>
-        
-        <div>
+<div class="item">
+    <div>Date of birth</div>
+    
+    <div>
+        <input 
+            type="date" 
+            name="birth"
+            value="{{teacher.birth}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Education level</div>
+    
+    <div>
+        <select name="schooling" id="schooling">
+            <option value="emc">Complete high school</option>
+            <option value="esc">Complete higher education</option>
+            <option value="md">Masters and Doctorate</option>
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Type of class</div>
+    <div>
+        <span>
             <input 
-                type="date" 
-                name="birth"
-                value="{{teacher.birth}}"
-            >
-        </div>
-    </div>
+                type="radio" 
+                name="type_of_class" 
+                value="P"
+                {% if teacher.type_of_class == 'P' %}
+                    checked
+                {% endif %}
+            >Presential
+        </span>
 
-    <div class="item">
-        <div>Education level</div>
-        
-        <div>
-            <select name="schooling" id="schooling">
-                <option value="emc">Complete high school</option>
-                <option value="esc">Complete higher education</option>
-                <option value="md">Masters and Doctorate</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="item">
-        <div>Type of class</div>
-        <div>
-            <span>
-                <input 
-                    type="radio" 
-                    name="type_of_class" 
-                    value="P"
-                    {% if teacher.type_of_class == 'P' %}
-                        checked
-                    {% endif %}
-                >Presential
-            </span>
-
-            <span>
-                <input 
-                    type="radio" 
-                    name="type_of_class" 
-                    value="R"
-                    {% if teacher.type_of_class == 'R' %}
-                        checked
-                    {% endif %}
-                >Remotely
-            </span>
-        </div>
-    </div>
-
-    <div class="item">
-        <div>Occupation area</div>
-        <div>
+        <span>
             <input 
-                type="text" 
-                name="acting" 
-                placeholder="Digite as áreas separadas por vírgula"
-                value="{{teacher.acting}}"
-            >
-        </div>
+                type="radio" 
+                name="type_of_class" 
+                value="R"
+                {% if teacher.type_of_class == 'R' %}
+                    checked
+                {% endif %}
+            >Remotely
+        </span>
     </div>
+</div>
 
-    <button type="submit">Save</button>
+<div class="item">
+    <div>Occupation area</div>
+    <div>
+        <input 
+            type="text" 
+            name="acting" 
+            placeholder="Enter the areas separated by commas"
+            value="{{teacher.acting}}"
+        >
+    </div>
+</div>
+
+<button type="submit">Save</button>

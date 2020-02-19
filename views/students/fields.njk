@@ -1,85 +1,72 @@
-    <div class="item">
-        <div>Avatar URL</div>
-        
-        <div>
-            <input type="url" name="avatar_url" placeholder="https://">
-        </div>
+<div class="item">
+    <div>Avatar URL</div>
+    
+    <div>
+        <input type="url" name="avatar_url" placeholder="https://">
     </div>
+</div>
 
-    <div class="item">
-        <div>Full name</div>
-        
-        <div>
-            <input
-                type="text"
-                name="name" 
-                placeholder="Digite o nome do professor"
-                value="{{teacher.name}}"
-            >
-        </div>
+<div class="item">
+    <div>Full name</div>
+    
+    <div>
+        <input
+            type="text"
+            name="name" 
+            placeholder="Enter student name"
+            value="{{student.name}}"
+        >
     </div>
+</div>
 
-    <div class="item">
-        <div>Date of birth</div>
-        
-        <div>
-            <input 
-                type="date" 
-                name="birth"
-                value="{{teacher.birth}}"
-            >
-        </div>
+<div class="item">
+    <div>Date of birth</div>
+    
+    <div>
+        <input 
+            type="date" 
+            name="birth"
+            value="{{student.birth}}"
+        >
     </div>
+</div>
 
-    <div class="item">
-        <div>Education level</div>
-        
-        <div>
-            <select name="schooling" id="schooling">
-                <option value="emc">Complete high school</option>
-                <option value="esc">Complete higher education</option>
-                <option value="md">Masters and Doctorate</option>
-            </select>
-        </div>
+<div class="item">
+    <div>Email</div>
+    
+    <div>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="exemple@email.com" 
+            value="{{student.email}}"
+        >
     </div>
+</div>
 
-    <div class="item">
-        <div>Type of class</div>
-        <div>
-            <span>
-                <input 
-                    type="radio" 
-                    name="type_of_class" 
-                    value="P"
-                    {% if teacher.type_of_class == 'P' %}
-                        checked
-                    {% endif %}
-                >Presential
-            </span>
+<div class="item">
+    <div>School year</div>
 
-            <span>
-                <input 
-                    type="radio" 
-                    name="type_of_class" 
-                    value="R"
-                    {% if teacher.type_of_class == 'R' %}
-                        checked
-                    {% endif %}
-                >Remotely
-            </span>
-        </div>
+    <div>
+        <select name="school_year" id="school_year">
+            <option value="5ef">5º year of elementary school</option>
+            <option value="6ef">6º year of elementary school</option>
+            <option value="7ef">7º year of elementary school</option>
+            <option value="8ef">8º year of elementary school</option>
+            <option value="9ef">9º year of elementary school</option>
+            <option value="1em">1º high school year</option>
+            <option value="2em">2º high school year</option>
+            <option value="3em">3º high school year</option>
+        </select>
     </div>
+</div>
 
-    <div class="item">
-        <div>Occupation area</div>
-        <div>
-            <input 
-                type="text" 
-                name="acting" 
-                placeholder="Digite as áreas separadas por vírgula"
-                value="{{teacher.acting}}"
-            >
-        </div>
+
+<div class="item">
+    <div>Weekly workload</div>
+
+    <div>
+        <input type="number" name="workload" value="{{student.workload}}" placeholder="0">
     </div>
-
-    <button type="submit">Save</button>
+</div>
+<button type="submit">Save</button>
