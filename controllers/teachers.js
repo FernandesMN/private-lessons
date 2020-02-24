@@ -32,7 +32,11 @@ exports.post = function(req,res) {
 
     //fazendo ajustes
     birth = Date.parse(birth);
-    acting = acting.split(",");
+
+    if(typeof acting == "string") {
+        acting = acting.split(",");
+    }
+    
     const created_at = Date.now();
     const id = Number(data.teachers.length + 1);
 
