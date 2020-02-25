@@ -19,7 +19,7 @@ server.use(mehotOverride('_method'));
 server.use(routes);
 
 //configurando nunjcuks
-nunjucks.configure("views", {
+nunjucks.configure("src/app/views", {
     express: server,
     //para que comandos dentro das tags html funcionem
     autoescape: false,

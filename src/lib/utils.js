@@ -1,6 +1,6 @@
 module.exports = {
     //método para calcular a idade
-    age: function age(timestamp) {
+    age(timestamp) {
         const today = new Date();
         const birthDay = new Date(timestamp);
 
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     //método para determinar a string de escolaridade baseado no valor recebido do HTML
-    graduation: function graduation(schooling) {
+    graduation(schooling) {
         let graduation = schooling;
 
         switch(graduation) {
@@ -29,7 +29,7 @@ module.exports = {
     },
 
     //método para retornar data em um formato para edição
-    date: function date(timestamp) {
+    date(timestamp) {
         const date = new Date(timestamp);
 
         const year = date.getUTCFullYear();
@@ -46,7 +46,7 @@ module.exports = {
         };
     },
 
-    grade: function grade(year) {
+    grade(year) {
         switch(year) {
             case "5ef":
                 return "5º year of elementary school"

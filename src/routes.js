@@ -1,8 +1,8 @@
 const express = require('express');
 const routes = express.Router();
 //importando métodos para as rotas
-const teachers = require('./controllers/teachers');
-const students = require('./controllers/students');
+const teachers = require('../src/app/controllers/teachers');
+const students = require('../src/app/controllers/students');
 
 routes.get("/", function(req,res) {
     return res.redirect("/teachers");
