@@ -27,24 +27,29 @@ module.exports = {
     
         const query = `
             INSERT INTO teachers (
+                avatarurl,
                 name,
                 birthdate,
                 educationlevel,
                 classtype,
                 subjectstaught
-            ) VALUES ($1,$2,$3,$4,$5)
+            ) VALUES ($1,$2,$3,$4,$5,$6)
             RETURNING id
         `
+        
+        let { avatar_url, name, birth, schooling, type_of_class, acting } = req.body;
 
         const values = [
-            req.body.name,
-            date(req.body.birth).iso,
-            graduation(req.body.schooling),
-            req.body.type_of_class,
-            req.body.acting
+            avatar_url,
+            name,
+            date(birth).iso,
+            graduation(schooling),
+            type_of_class,
+            acting
         ]
 
         db.query(query, values, function(err, results) {
+            console.log(err);
             if(err) return res.send("Database Error!");
 
             return res.redirect(`/teachers/${results.rows[0].id}`);
