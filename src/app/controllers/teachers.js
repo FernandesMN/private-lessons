@@ -1,12 +1,10 @@
-const { graduation, date } = require('../../lib/utils');
-const db = require("../../config/db");
+const Teacher = require('../models/Teacher');
+const { graduation, date, age } = require('../../lib/utils');
 
 module.exports = {
     index(req,res) {
-        db.query(`SELECT * FROM teachers`, function(err, results) {
-            if(err) return res.send("Database Error!");
-            
-            return res.render("teachers/index", {teachers: results.rows});
+        Teacher.all(function(teachers) {
+            return res.render("teachers/index", {teachers});
         });
     },
 
@@ -25,42 +23,35 @@ module.exports = {
             };
         };
     
-        const query = `
-            INSERT INTO teachers (
-                avatarurl,
-                name,
-                birthdate,
-                educationlevel,
-                classtype,
-                subjectstaught
-            ) VALUES ($1,$2,$3,$4,$5,$6)
-            RETURNING id
-        `
-        
-        let { avatar_url, name, birth, schooling, type_of_class, acting } = req.body;
-
-        const values = [
-            avatar_url,
-            name,
-            date(birth).iso,
-            graduation(schooling),
-            type_of_class,
-            acting
-        ]
-
-        db.query(query, values, function(err, results) {
-            if(err) return res.send("Database Error!");
-
-            return res.redirect(`/teachers/${results.rows[0].id}`);
+        Teacher.create(req.body, function(teacher) {
+            return res.redirect(`/teachers/${teacher.id}`);
         });
     },
 
     show(req,res) {
-        return res.render("teachers/show");
+        Teacher.find(req.params.id, function(teacher) {
+            if(!teacher) return res.send("Instructor not found");
+
+            teacher.age = age(teacher.birth_date);
+            teacher.schooling = graduation(teacher.education_level);
+            teacher.acting = teacher.acting.split(",");
+            teacher.created_at = date(teacher.created_at).format;
+            teacher.type_of_class = teacher.classtype;
+            
+            return res.render("teachers/show", {teacher});
+        });
     },
 
-    edit(req, res) {    
-        return res.render("teachers/edit");
+    edit(req, res) {
+        Teacher.find(req.params.id, function(teacher) {
+            if(!teacher) return res.send("Teacher not found!");
+
+            teacher.birth = date(teacher.birth_date).iso;
+            teacher.schooling = teacher.education_level;
+            teacher.type_of_class = teacher.classtype;
+
+            return res.render("teachers/edit", {teacher});
+        });
     },
 
     update(req, res) {
@@ -74,10 +65,14 @@ module.exports = {
             };
         };
 
-        return;
+        Teacher.update(req.body, function() {
+            return res.redirect(`/teachers/${req.body.id}`);
+        });
     },
 
     delete(req, res) {
-        return;
+        Teacher.delete(req.body.id, function() {
+            return res.redirect("/teachers");
+        })
     }
 };

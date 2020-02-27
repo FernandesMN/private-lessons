@@ -1,8 +1,11 @@
+const Student = require('../models/Student');
 const { date, grade } = require('../../lib/utils');
 
 module.exports = {
     index(req,res) {
-        return res.render("students/index");
+        Student.all(function(students) {
+            return res.render("students/index", {students});
+        });
     },
 
     create(req,res) {
@@ -20,15 +23,31 @@ module.exports = {
             };
         };
     
-        return;
+        Student.create(req.body, function(student) {
+            return res.redirect(`/students/${student.id}`);
+        });
     },
 
     show(req,res) {
-        return res.render("students/show");
+        Student.find(req.params.id, function(student) {
+            if(!student) return res.send("Instructor not found");
+
+            student.birth = date(student.birth_date).birthDay;
+            student.created_at = date(student.created_at).format;
+            student.school_year = grade(student.school_year);
+            
+            return res.render("students/show", {student});
+        });
     },
 
-    edit(req, res) {    
-        return res.render("students/edit");
+    edit(req, res) {
+        Student.find(req.params.id, function(student) {
+            if(!student) return res.send("Student not found!");
+
+            student.birth = date(student.birth_date).iso;
+
+            return res.render("students/edit", {student});
+        });
     },
 
     update(req, res) {
@@ -42,10 +61,14 @@ module.exports = {
             };
         };
 
-        return;
+        Student.update(req.body, function() {
+            return res.redirect(`/students/${req.body.id}`);
+        });
     },
 
     delete(req, res) {
-        return;
+        Student.delete(req.body.id, function() {
+            return res.redirect("/students");
+        })
     }
 };
