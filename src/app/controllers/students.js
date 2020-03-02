@@ -9,7 +9,9 @@ module.exports = {
     },
 
     create(req,res) {
-        return res.render("students/create");
+        Student.teachersSelectOptions(function(options) {
+            return res.render("students/create", {teacherOptions: options});
+        });
     },
 
     post(req,res) {
@@ -30,7 +32,7 @@ module.exports = {
 
     show(req,res) {
         Student.find(req.params.id, function(student) {
-            if(!student) return res.send("Instructor not found");
+            if(!student) return res.send("Student not found");
 
             student.birth = date(student.birth_date).birthDay;
             student.created_at = date(student.created_at).format;
@@ -46,7 +48,9 @@ module.exports = {
 
             student.birth = date(student.birth_date).iso;
 
-            return res.render("students/edit", {student});
+            Student.teachersSelectOptions(function(options) {
+                return res.render("students/edit", {student, teacherOptions: options});
+            });
         });
     },
 

@@ -6,7 +6,19 @@
 
 {% block content %}
     <div class="card table-container">
-        <a href="/teachers/create">New</a>
+        <div class="header">
+            <a class="button" href="/teachers/create">New</a>
+
+            <form class="filter" action="/teachers" method="GET">
+                <input 
+                    type="text" 
+                    name="filter"
+                    placeholder="Name or side dish"
+                    value="{{filter}}"
+                >
+                <button type="submit">Filter</button>
+            </form>        
+        </div>
 
         <table width="100%">
             <thead>
@@ -22,9 +34,7 @@
                     <tr>
                         <td><span style="background-image: url({{teacher.avatar_url}})"></span>{{teacher.name}}</td>
                         <td>
-                            {% for acting in teacher.acting %}
-                                <span>{{acting}}</span>
-                            {% endfor %}
+                            {{teacher.acting}}
                         </td>
                         <td><a href="/teachers/{{teacher.id}}">show</a></td>
                     </tr>

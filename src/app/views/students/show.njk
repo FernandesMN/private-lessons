@@ -40,6 +40,12 @@
                 <div>{{student.workload}} hr</div>
             </div>
 
+            <div class="item">
+                <div>Student of</div>
+                
+                <div>{{student.teacher_name}}</div>
+            </div>
+
             <div class="redirect">
                 <a href="/students/{{student.id}}/edit" class="button">Edit</a>
                 <form method="POST" action="/students?_method=DELETE" id="form-delete">

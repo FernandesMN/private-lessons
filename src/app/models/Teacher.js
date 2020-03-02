@@ -51,6 +51,19 @@ module.exports = {
         });
     },
 
+    findBy(filter, callback) {
+        db.query(`SELECT teachers.* FROM teachers
+        LEFT JOIN students ON (students.teacher_id = teachers.id)
+        WHERE teachers.name ILIKE '%${filter}%'
+        OR teachers.acting ILIKE '%${filter}%'
+        ORDER BY teachers.id`, function(err, results) {
+            if (err) throw `Database Error: ${err}`;
+
+            callback(results.rows);
+        });
+
+    },
+
     update(data, callback) {
         
         const query = `
