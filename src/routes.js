@@ -17,7 +17,7 @@ routes.post("/teachers", teachers.post);
 routes.put("/teachers", teachers.update);
 routes.delete("/teachers", teachers.delete);
 
-//members
+//students
 routes.get("/students", students.index);
 routes.get("/students/create", students.create);
 routes.get("/students/:id/edit", students.edit);

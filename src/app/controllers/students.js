@@ -4,6 +4,11 @@ const { date, grade } = require('../../lib/utils');
 module.exports = {
     index(req,res) {
         Student.all(function(students) {
+
+            for (student of students) {
+                student.school_year = grade(student.school_year);
+            };
+
             return res.render("students/index", {students});
         });
     },
