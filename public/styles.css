@@ -165,6 +165,7 @@ button[type="submit"] {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 a.button {
@@ -324,4 +325,11 @@ tbody tr td:last-child a {
 .pagination a:hover {
     filter: brightness(0.4);
     border-bottom: 1px solid var(--primary-color);
+}
+
+.table-container .new-student {
+    width: 120px;
+    height: 24px;
+    text-align: center;
+    font-size: 16px;
 }

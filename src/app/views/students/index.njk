@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="card table-container">
-        <a href="/students/create">New</a>
+        <a class="new-student" href="/students/create">New</a>
 
         <table width="100%">
             <thead>
@@ -29,6 +29,12 @@
                 {% endfor %}
             </tbody>
         </table>
+    
+        <div 
+            class="pagination"
+            data-page="{{pagination.page}}"
+            data-total="{{pagination.total}}"
+        ></div>
     </div>
 {% endblock %}
 
